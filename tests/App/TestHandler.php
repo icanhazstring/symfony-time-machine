@@ -8,15 +8,7 @@ use Icanhazstring\SymfonyTimeMachine\TimeMachineHandler;
 
 final class TestHandler implements TimeMachineHandler
 {
-    private CallSpy $spy;
-
     public function handle(): void
     {
-        $this->spy->called = true;
-    }
-
-    public function setSpy(CallSpy $callSpy): void
-    {
-        $this->spy = $callSpy;
     }
 }

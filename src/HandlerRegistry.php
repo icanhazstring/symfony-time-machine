@@ -11,10 +11,12 @@ final class HandlerRegistry
     /** @var iterable<TimeMachineHandler> */
     private iterable $handlers;
 
+    /**
+     * @param iterable<TimeMachineHandler> $handlers
+     */
     public function __construct(
         #[TaggedIterator('timemachine.handler')] iterable $handlers = []
-    )
-    {
+    ) {
         $this->handlers = $handlers;
     }
 

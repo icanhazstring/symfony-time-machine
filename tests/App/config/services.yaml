@@ -9,5 +9,7 @@ services:
   Icanhazstring\SymfonyTimeMachine\Test\App\TestClockService:
     public: true
 
+  Icanhazstring\SymfonyTimeMachine\Test\App\TestHandler: ~
+
   Symfony\Component\Clock\ClockInterface:
     class: Symfony\Component\Clock\NativeClock
