@@ -74,6 +74,12 @@ final class TimeKernel
             new MockClock(new DateTimeImmutable((string) $timeMachineOffset))
         );
 
+        /** @var HandlerRegistry $handlerRegistry */
+        $handlerRegistry = $this->kernel->getContainer()->get(HandlerRegistry::class);
+        foreach ($handlerRegistry->getHandlers() as $handler) {
+            $handler->handle();
+        }
+
         $this->booted = true;
     }
 }
