@@ -1,0 +1,8 @@
+parameters:
+    excludes_analyse:
+        - %currentWorkingDirectory%/tests/App
+    level: 8
+    paths:
+        - src/
+        - tests/
+    tmpDir: data
