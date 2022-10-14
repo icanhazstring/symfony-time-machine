@@ -76,3 +76,63 @@ return function (array $context) {
     return new Application($kernel);
 };
 ```
+
+### Register additional `TimeMachineHandler`
+Sometimes you need to alter some other services in your application along with the time-machine.
+For this you can implement services implementing the `TimeMachineHandler` interface.
+
+These will be called right after the `ClockInterface` was changed in the container.
+The `TimeKernel` will use the `HandlerRegistry` to call `TimeMachineHandler::handle()` on all
+available services.
+
+For example, you could add the `time-machine` query parameter to all openapi paths
+in your application, as shown here using api-platform:
+
+```php
+final class PathModifier implements OpenApiPathModifier, TimeMachineHandler
+{
+    public function __construct(private readonly OpenApiFactory $openApiFactory)
+    {
+    }
+
+    public function handles(string $path, PathItem $pathItem): bool
+    {
+        return true;
+    }
+
+    public function modify(PathItem $pathItem): PathItem
+    {
+        /** @var array<string, null|Operation> $operations */
+        $operations = [
+            'get' => $pathItem->getGet(),
+            'post' => $pathItem->getPost(),
+        ];
+
+        foreach ($operations as $method => $operation) {
+            if ($operation === null) {
+                continue;
+            }
+
+            $queryParameters = $operation->getParameters();
+            $queryParameters[] = new Parameter(
+                name: 'time-machine',
+                in: 'query',
+                description: 'Sets the applications datetime to a specific value.',
+                required: false,
+                schema: ['type' => 'string', 'default' => 'now']
+            );
+
+            $wither = 'with'.ucfirst($method);
+            /** @var PathItem $pathItem */
+            $pathItem = $pathItem->{$wither}($operation->withParameters($queryParameters));
+        }
+
+        return $pathItem;
+    }
+
+    public function handle(): void
+    {
+        $this->openApiFactory->addModifier($this);
+    }
+}
+```
