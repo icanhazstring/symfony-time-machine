@@ -1,0 +1,13 @@
+framework:
+  test: true
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Icanhazstring\SymfonyTimeMachine\Test\App\TestClockService:
+    public: true
+
+  Symfony\Component\Clock\ClockInterface:
+    class: Symfony\Component\Clock\NativeClock

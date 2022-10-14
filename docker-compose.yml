@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  php8.1:
+    build: .docker/php8.1
+    container_name: symfony-time-machine-8.1
+    volumes:
+      - .:/docker/symfony-time-machine:rw
+    tty: true
