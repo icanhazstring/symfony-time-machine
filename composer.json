@@ -32,7 +32,7 @@
         "php": "^8.1",
         "symfony/clock": "^6.2.x-dev",
         "symfony/dependency-injection": "^5.4 || ^6.1",
-        "symfony/http-kernel": "^5.4 || ^6.1"
+        "symfony/http-kernel": "^6.2.0"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.29",
