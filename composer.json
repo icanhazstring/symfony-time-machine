@@ -36,7 +36,7 @@
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.31",
-        "phpstan/phpstan": "^1.10.18",
+        "phpstan/phpstan": "^1.10.20",
         "phpunit/phpunit": "^10.2.2",
         "roave/security-advisories": "dev-master",
         "squizlabs/php_codesniffer": "^3.7.2",
