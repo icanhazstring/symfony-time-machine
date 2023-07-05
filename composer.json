@@ -37,7 +37,7 @@
     "require-dev": {
         "ergebnis/composer-normalize": "^2.31",
         "phpstan/phpstan": "^1.10.23",
-        "phpunit/phpunit": "^10.2.2",
+        "phpunit/phpunit": "^10.2.3",
         "roave/security-advisories": "dev-master",
         "squizlabs/php_codesniffer": "^3.7.2",
         "symfony/framework-bundle": "^6.3",
