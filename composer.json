@@ -35,7 +35,7 @@
         "symfony/http-kernel": "^5.4 || ^6.1"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^2.33",
+        "ergebnis/composer-normalize": "^2.34",
         "phpstan/phpstan": "^1.10.25",
         "phpunit/phpunit": "^10.2.6",
         "roave/security-advisories": "dev-master",
